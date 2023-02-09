@@ -17,13 +17,12 @@ class TeamController extends Controller
         // DEBUG:
         // echo "TeamController ... id_club = " . $id_club . "<br><br>";
         // die;
-
-        $fieldsetClub = Club::select("*")->where('id','=',$id_club);
-        $recordsetTeams = Team::select("*")->where('club_id','=',$id_club)->get()->sortByDesc('name');        
-        // print($recordsetTeams);
-        
+        $recordsetTeams = Team::select("*")->where('club_id','=',$id_club)->get()->sortByDesc('name');                
         if (count($recordsetTeams) == 0) {
-            echo "no hi ha registres";
+            echo "no hi ha Equips per aquest Club, tornem a mostrar Fitxa Club... <br>";
+            $fieldsetClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');
+            echo "cantidad elementos en fieldsetClub = " . count($fieldsetClub) . "<br>";   
+            echo "fieldsetClub[0]->id=".$fieldsetClub[0]->id;         
             return view('club.edit')->with('club',$fieldsetClub);
         }else{
             return view('team.index')->with('recordsetTeams',$recordsetTeams);
