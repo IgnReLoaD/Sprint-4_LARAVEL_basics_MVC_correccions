@@ -46,8 +46,9 @@
 <hr>
     <!-- LLISTA DE TEAMS_CATEGORIES D'AQUEST CLUB  -->
     <div class="container mt-6">        
+        <a href="/clubs/{{$club->id}}/teams/create" class="btn btn-success">Crear un equip per aquest Club</a>  
         <a href="/clubs/{{$club->id}}/teams" class="btn btn-success">Veure els seus equips...</a>         
-
+        
         <!-- @csrf   -->
         <!-- @yield('teamsList') -->
     </div>

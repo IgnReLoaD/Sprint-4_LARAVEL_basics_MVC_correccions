@@ -20,10 +20,12 @@
     <div class="mb-3">
         <label for="inpNom" class="form-label">Nom categoria</label>
         <input type="text" id="inpNom" name="inpNom" class="form-control" tabindex="1">
+        <p>(serà un combo desplegable, de moment valors valids: FirstTeam, SecondTeam, Juvenil, Aleví, Cadet, Infantil, Amateur, o Legends)</p>
     </div>
     <div class="mb-3">
         <label for="inpTyp" class="form-label">Tipus esport</label>
         <input type="text" id="inpTyp" name="inpTyp" class="form-control" tabindex="2">
+        <p>(serà un combo desplegable, de moment valors valids: soccer, basketball, o handball)</p>
     </div>    
     <a href="/clubs/{{$id_club}}/teams" class="btn btn-secondary" tabindex="3">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="4">Grabar</button>

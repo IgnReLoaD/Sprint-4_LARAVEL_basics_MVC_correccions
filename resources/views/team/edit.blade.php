@@ -43,7 +43,8 @@
 <br>
 <hr>
     <!-- LLISTA DE PLAYERS D'AQUEST TEAM  -->
-    <div class="container mt-6">        
+    <div class="container mt-6">       
+        <a href="/clubs/{{$objTeam->club_id}}/teams/{{$objTeam->id}}/players/create" class="btn btn-success">Nou jugador per aquest Equip</a>  
         <a href="/clubs/{{$objTeam->club_id}}/teams/{{$objTeam->id}}/players" class="btn btn-success">Veure els seus jugadors...</a>         
         <!-- @csrf   -->
         <!-- @yield('teamsList') -->

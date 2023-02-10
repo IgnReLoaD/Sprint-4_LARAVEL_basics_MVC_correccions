@@ -15,17 +15,12 @@ class PlayerController extends Controller
      */
     public function index($id_club, $id_team)
     {
-        //echo "PlayerController - index - id_club=".$id_club." id_team=".$id_team."<br>";
-        
-        // per quan tornem enrere a Fitxa Team necessitem nomenclatura objClub i objTeam
-
         $recordsetPlayers = Player::select("*")->where('team_id','=',$id_team)->get()->sortByDesc('name');
         if (count($recordsetPlayers) == 0) {
-            echo "ATENCIO: no hi ha registres!! Tornant a la fitxa del Equip...";
-            // sleep(0.5);           
-            $fieldsetTeam = Team::select("*")->where('id','=',$id_team);
+            echo "<p style=color:red>ATENCIO: no hi ha jugadors, tornem a Fitxa Equip...</p>";            
+            $fieldsetTeam = Team::select("*")->where('id','=',$id_team)->get()->sortByDesc('name');
             return view('team.edit')
-                ->with('objTeam',$fieldsetTeam);
+                ->with('objTeam',$fieldsetTeam[0]);
         }else{
             return view('player.index')                
                 ->with('recordsetPlayers',$recordsetPlayers)
