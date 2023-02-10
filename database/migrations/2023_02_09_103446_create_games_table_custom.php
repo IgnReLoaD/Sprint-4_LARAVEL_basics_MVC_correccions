@@ -17,7 +17,7 @@ class CreateGamesTableCustom extends Migration
             // $table->id();
             // $table->integer('id_match',6)->increments()->unsigned();
             $table->increments('id',10)->unsigned();             
-            $table->dateTime('datetime');
+            $table->dateTime('datetime')->nullable();
             $table->string('journey',2);            
 
             // FK - HOME TEAM

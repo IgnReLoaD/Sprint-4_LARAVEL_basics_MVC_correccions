@@ -45,10 +45,10 @@ Route::controller(PlayerController::class)->group(function(){
     Route::get( 'clubs/{club}/teams/{team}/players',  'index');
     Route::get( 'clubs/{club}/teams/{team}/players/create',  'create');
     Route::post('clubs/{club}/teams/{team}/players',  'store');
-    // Route::get( 'clubs/{club}/teams/{team}/players/{player}/edit',  'edit');
+    Route::get( 'clubs/{club}/teams/{team}/players/{player}/edit',  'edit');
     Route::get( 'players/{player}/edit',  'edit');
     Route::put( 'clubs/{club}/teams/{team}/players/{player}',  'update');
-    // Route::delete( 'clubs/{club}/teams/{team}/players/{player}/destroy',  'destroy');
+    Route::delete( 'clubs/{club}/teams/{team}/players/{player}/destroy',  'destroy');
     Route::delete( 'players/{player}/destroy',  'destroy');
 });
 

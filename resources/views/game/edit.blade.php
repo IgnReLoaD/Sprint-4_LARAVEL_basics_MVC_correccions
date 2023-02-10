@@ -51,7 +51,7 @@
 <hr>
     <!-- LLISTA D'ACCIONS D'AQUEST PARTIT  -->
     <div class="container mt-6">        
-        <a href="/games/{{$game->id}}/actions" class="btn btn-success">Veure el minut a minut... </a>
+        <a href="/games/{{$game->id}}/actions" class="btn btn-success">Veure el minut a minut (accions)... [opció no disponible]</a>
         <!-- @csrf   -->
         <!-- @yield('teamsList') -->
     </div>    

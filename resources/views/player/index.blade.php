@@ -36,7 +36,8 @@
                 <td>  
                 {{-- y --}}   
                     <form action="players/{{$fieldsetPlayer->id}}/destroy" method="post">
-                        <a href="players/{{$fieldsetPlayer->id}}/edit" class="btn btn-success">editar</a>             
+                        {{-- <a href="players/{{$fieldsetPlayer->id}}/edit" class="btn btn-success">editar</a> --}}
+                        <a href="/clubs/{{$id_club}}/teams/{{$recordsetPlayers[0]->team_id}}/players/{{$fieldsetPlayer->id}}/edit" class="btn btn-success">editar</a>                        
                         @csrf 
                         @method('DELETE')
                         <button class="btn btn-danger">borrar</button>
