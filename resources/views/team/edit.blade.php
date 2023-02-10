@@ -34,7 +34,7 @@
     </div>    
     <div class="mb-3 form-group">                
         <label for="cmbNomTeam" class="form-label">Nom equip (seva categoria)</label>
-        <select id="cmbNomTeam" class="form-control" name="cmbNomTeam" default="{{$objTeam->name}}" tabindex="1">
+        <select id="cmbNomTeam" class="form-control" name="cmbNomTeam" tabindex="1">
             <option value="FirstTeam" <?php if($objTeam->name=="FirstTeam") echo " selected='true'" ?> >FirstTeam</option>
             <option value="SecondTeam" <?php if($objTeam->name=="SecondTeam") echo " selected='true'" ?> >SecondTeam</option>
             <option value="Juvenil"   <?php if($objTeam->name=="Juvenil") echo " selected='true' " ?> >Juvenil</option>

@@ -24,23 +24,23 @@
         <input type="text" id="inpCodPlayer" name="inpCodPlayer" class="form-control" disabled>
     </div>
     <div class="mb-3">
-        <label for="inpTea" class="form-label">Equip</label>
+        <label for="inpCodTeam" class="form-label">Equip</label>
         <!-- ojo! si ponemos DISABLED no incorpora el valor inpTea dentro del $_POST[]  -->
-        <input type="text" id="inpTea" name="inpTea" class="form-control" tabindex="0"        
+        <input type="text" id="inpCodTeam" name="inpCodTeam" class="form-control" tabindex="0"        
         value="{{$id_team}}">
         {{-- value="{{$team->id}}"> --}}
     </div>    
     <div class="mb-3">
-        <label for="inpNom" class="form-label">Nom jugador</label>
-        <input type="text" id="inpNom" name="inpNom" class="form-control" tabindex="1">
+        <label for="inpNomPlayer" class="form-label">Nom jugador</label>
+        <input type="text" id="inpNomPlayer" name="inpNomPlayer" class="form-control" tabindex="1">
     </div>
     <div class="mb-3">
-        <label for="inpDor" class="form-label">Dorsal</label>
-        <input type="number" id="inpDor" name="inpDor" class="form-control" tabindex="2">
+        <label for="inpDorsal" class="form-label">Dorsal</label>
+        <input type="number" id="inpDorsal" name="inpDorsal" class="form-control" tabindex="2">
     </div>    
     <div class="mb-3">
-        <label for="inpBir" class="form-label">Naixament</label>
-        <input type="date" id="inpBir" name="inpBir" class="form-control" tabindex="3">
+        <label for="inpBirthdate" class="form-label">Naixament</label>
+        <input type="date" id="inpBirthdate" name="inpBirthdate" class="form-control" tabindex="3">
     </div>    
 
     {{-- <a href="/clubs/{{$team->club_id}}/teams/{{$team->id}}/players" class="btn btn-secondary" tabindex="3">Cancelar</a> --}}

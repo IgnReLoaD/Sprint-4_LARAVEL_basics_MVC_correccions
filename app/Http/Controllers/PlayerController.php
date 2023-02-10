@@ -64,17 +64,17 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         $objPlayer = new Player();
-        $objPlayer->team_id = $request->get('inpTea');
-        $objPlayer->name = $request->get('inpNom');
-        $objPlayer->number = $request->get('inpDor');   
-        $objPlayer->birthdate = $request->get('inpBir');
+        $objPlayer->team_id = $request->get('inpCodTeam');
+        $objPlayer->name = $request->get('inpNomPlayer');
+        $objPlayer->number = $request->get('inpDorsal');   
+        $objPlayer->birthdate = $request->get('inpBirthdate');
         $objPlayer->save();
         // preparar la view 
-        $objTeam = Team::find($request->get('inpTea'));
+        $objTeam = Team::find($request->get('inpCodTeam'));
         $recordsetPlayers = Player::select("*")->where('team_id','=',$objPlayer->team_id)->get()->sortByDesc('name');
         return view('player.index')
                 ->with('recordsetPlayers',$recordsetPlayers)
-                ->with('id_club',$objTeam->club_id); 
+                ->with('id_club',$objTeam->club_id);
     }
 
     /**
@@ -96,10 +96,18 @@ class PlayerController extends Controller
      */
     public function edit($id_club, $id_team, $id_player)
     {        
-        $objClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');        
+        // $fieldsetClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');        
+        // $fieldsetTeam = Team::find($id_team);
+        // $fieldsetPlayer = Player::find($id_player);
+        // // return view('player.edit', compact('objClub','objTeam','objPlayer'));
+        // return view('player.edit')
+        //         ->with('objClub',$fieldsetClub[0])
+        //         ->with('objTeam',$fieldsetTeam[0])
+        //         ->with('objPlayer',$fieldsetPlayer[0]);
+        $objClub = Club::find($id_club);
         $objTeam = Team::find($id_team);
         $objPlayer = Player::find($id_player);
-        return view('player.edit', compact('objClub','objTeam','objPlayer'));
+        return view('player.edit', compact('objClub', 'objTeam', 'objPlayer'));
     }
 
     /**
