@@ -15,16 +15,23 @@ class PlayerController extends Controller
      */
     public function index($id_club, $id_team)
     {
+        echo "id_club: " . $id_club;
+        // die;
+
+        $fieldsetClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');
         $recordsetPlayers = Player::select("*")->where('team_id','=',$id_team)->get()->sortByDesc('name');
         if (count($recordsetPlayers) == 0) {
             echo "<p style=color:red>ATENCIO: no hi ha jugadors, tornem a Fitxa Equip...</p>";            
             $fieldsetTeam = Team::select("*")->where('id','=',$id_team)->get()->sortByDesc('name');
+            // $fieldsetClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');
             return view('team.edit')
-                ->with('objTeam',$fieldsetTeam[0]);
+                ->with('objTeam',$fieldsetTeam[0])
+                ->with('objClub',$fieldsetClub[0]);
         }else{
             return view('player.index')                
                 ->with('recordsetPlayers',$recordsetPlayers)
-                ->with('id_club',$id_club);
+                ->with('id_club',$id_club)
+                ->with('objClub',$fieldsetClub[0]);
                 // , compact('recordsetPlayers', 'id_club'));
         }
     }
@@ -38,10 +45,14 @@ class PlayerController extends Controller
     {
         // echo "PlayerController ... create!!  .. id_club=".$id_club." id_team=" . $id_team;
         // die;
+        $fieldsetClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');        
+        $fieldsetTeam = Team::select("*")->where('id','=',$id_team)->get()->sortByDesc('name');
         // per crear un Player que pertanyi al Team (li passem valor a grabar a Clau Forana)
         return view('player.create')
                 ->with('id_club',$id_club)
-                ->with('id_team',$id_team);
+                ->with('id_team',$id_team)
+                ->with('objTeam',$fieldsetTeam[0])
+                ->with('objClub',$fieldsetClub[0]);
     }
 
     /**
@@ -85,9 +96,10 @@ class PlayerController extends Controller
      */
     public function edit($id_club, $id_team, $id_player)
     {        
+        $objClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');        
         $objTeam = Team::find($id_team);
         $objPlayer = Player::find($id_player);
-        return view('player.edit', compact('objTeam','objPlayer'));
+        return view('player.edit', compact('objClub','objTeam','objPlayer'));
     }
 
     /**

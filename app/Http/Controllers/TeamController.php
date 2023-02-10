@@ -37,8 +37,11 @@ class TeamController extends Controller
      */
     public function create($id_club)
     {
+        $objClub = Club::find($id_club);
         // per crear un Team que pertanyi al Club (li passem valor a grabar a Clau Forana)
-        return view('team.create')->with('id_club',$id_club);
+        return view('team.create')
+                    ->with('id_club',$id_club)
+                    ->with('objClub',$objClub);
     }
 
     /**
@@ -50,16 +53,16 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         // 'request' conté el $_POST[input1,input2,input3...] 
-        // print($request->get('inpClb'));
-        // print($request->get('inpNom'));
-        // print($request->get('inpTyp'));
+        // echo 'request inpCodClub: ' . $request->get('inpCodClub');
+        // echo 'request cmbNomTeam: ' . $request->get('cmbNomTeam');
+        // echo 'request cmbTypTeam: ' . $request->get('cmbTypTeam');
         // die;
         $objTeam = new Team();
-        $objTeam->club_id = $request->get('inpClb');
-        $objTeam->name = $request->get('inpNom');
-        $objTeam->type = $request->get('inpTyp');  
+        $objTeam->club_id = $request->get('inpCodClub');
+        $objTeam->name = $request->get('cmbNomTeam');
+        $objTeam->type = $request->get('cmbTypTeam');  
         $objTeam->save();
-        $objClub = Club::find($request->get('inpClb'));
+        $objClub = Club::find($request->get('inpCodClub'));
         return view('club.edit')->with('club',$objClub);
     }
 
@@ -101,18 +104,10 @@ class TeamController extends Controller
         // echo "TeamController - update() - id_club=".$id_club." id_team=".$id_team."<br>";
         // die;
         $objTeam = Team::find($id_team);
-        $objTeam->club_id = $request->get('inpClb');
-        $objTeam->name = $request->get('inpNom');
-        $objTeam->type = $request->get('inpTyp');
+        $objTeam->club_id = $request->get('inpCodClub');
+        $objTeam->name = $request->get('cmbNomTeam');
+        $objTeam->type = $request->get('cmbTypTeam');
         $objTeam->save();
-        // die;
-        // $recordsetTeams = Team::where('club_id','=',$objTeam->club_id);
-        // var_dump($recordsetTeams);
-        // echo count($recordsetTeams);
-        // die;
-        // Club - veure els seus equips ... /clubs/{{$club->id}}/teams
-        // return view('team.index')->with($recordsetTeams);
-
         return redirect('/clubs/'.$objTeam->club_id.'/teams');        
     }
 

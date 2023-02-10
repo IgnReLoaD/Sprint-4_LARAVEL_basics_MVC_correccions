@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+
+use App\Models\Club;
+use App\Models\Team;
 use App\Models\Game;
+
 
 class GameController extends Controller
 {
@@ -15,7 +19,7 @@ class GameController extends Controller
     {
         // echo "GameController ... index";
         // die;
-        $recordsetGames = Game::all() ;          
+        $recordsetGames = Game::all();
         return view('game.index')->with('recordsetGames', $recordsetGames);
     }
 
@@ -26,7 +30,9 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('game.create') ;
+        // seria interesante filtrar por campo categoria (Alevin, Juvenil...)
+        $recordsetTeams = Team::all();
+        return view('game.create')->with('teams',$recordsetTeams);
     }
 
     /**
@@ -69,8 +75,14 @@ class GameController extends Controller
      */
     public function edit($id_game)
     {
-        $objGame = Game::find($id_game) ;        
-        return view('game.edit')->with('game',$objGame);
+        $recordsetClubs = Club::all();
+        // seria interesante filtrar por campo categoria (Alevin, Juvenil...)
+        $recordsetTeams = Team::all();
+        $objGame = Game::find($id_game);        
+        return view('game.edit')
+                    ->with('game',$objGame)
+                    ->with('clubs',$recordsetClubs)
+                    ->with('teams',$recordsetTeams);
     }
 
     /**

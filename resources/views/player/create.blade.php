@@ -10,8 +10,18 @@
     <!-- confiar en la pagina, i que no surti error 419-page expired  -->
     @csrf 
     <div class="mb-3">
-        <label for="inpCod" class="form-label">Codi</label>
-        <input type="text" id="inpCod" name="inpCod" class="form-control" disabled>
+        <label for="inpNomClub" class="form-label">Nom Club</label>
+        <input type="text" id="inpNomClub" name="inpNomClub" class="form-control" tabindex="0" disabled
+        value="{{$objClub->name}}">
+    </div>      
+    <div class="mb-3">
+        <label for="inpNomTeam" class="form-label">Nom Equip (categoria)</label>        
+        <input type="text" id="inpNomTeam" name="inpNomTeam" class="form-control" tabindex="0" disabled
+        value="{{$objTeam->name}}">
+    </div>       
+    <div class="mb-3">
+        <label for="inpCodPlayer" class="form-label">Codi jugador</label>
+        <input type="text" id="inpCodPlayer" name="inpCodPlayer" class="form-control" disabled>
     </div>
     <div class="mb-3">
         <label for="inpTea" class="form-label">Equip</label>
@@ -36,6 +46,6 @@
     {{-- <a href="/clubs/{{$team->club_id}}/teams/{{$team->id}}/players" class="btn btn-secondary" tabindex="3">Cancelar</a> --}}
     <a href="/clubs/{{$id_club}}/teams/{{$id_team}}/players" class="btn btn-secondary" tabindex="4">Cancelar</a>
 
-    <button type="submit" class="btn btn-primary" tabindex="5">Grabar</button>
+    <button type="submit" class="btn btn-success" tabindex="5">Grabar</button>
 </form>
 @endsection

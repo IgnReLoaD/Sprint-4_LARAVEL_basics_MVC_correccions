@@ -8,7 +8,10 @@
 
     <h2>Vista Index de Players del Team {{$recordsetPlayers[0]->team_id}}:</h2>
     <p></p>
-    <a href="players/create" class="btn btn-success mb-6">Crear jugador per aquest club/equip</a>
+    
+    <a href="players/create" 
+       class="btn btn-success mb-6">Crear jugador per aquest club/equip</a>
+    
     <p></p>
     <table id="tblTeams" class="table table-success table-striped table-bordered shadow-lg mt-4" style="width:100%">
         <thead class="bg-success text-success">
@@ -37,7 +40,7 @@
                 {{-- y --}}   
                     <form action="players/{{$fieldsetPlayer->id}}/destroy" method="post">
                         {{-- <a href="players/{{$fieldsetPlayer->id}}/edit" class="btn btn-success">editar</a> --}}
-                        <a href="/clubs/{{$id_club}}/teams/{{$recordsetPlayers[0]->team_id}}/players/{{$fieldsetPlayer->id}}/edit" class="btn btn-success">editar</a>                        
+                        <a href="/clubs/{{$id_club}}/teams/{{$recordsetPlayers[0]->team_id}}/players/{{$fieldsetPlayer->id}}/edit" class="btn btn-success">editar</a>
                         @csrf 
                         @method('DELETE')
                         <button class="btn btn-danger">borrar</button>

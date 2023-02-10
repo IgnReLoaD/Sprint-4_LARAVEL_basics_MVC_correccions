@@ -11,9 +11,18 @@
     @csrf 
     <!-- etiqueta Form només té method Post/Get, aquesta directiva de Blade permet dir PUT -->
     @method('PUT')
-    
     <div class="mb-3">
-        <label for="inpCod" class="form-label">Codi</label>
+        <label for="inpNomClub" class="form-label">Nom Club</label>
+        <input type="text" id="inpNomClub" name="inpNomClub" class="form-control" tabindex="0" disabled
+        value="{{$objClub->name}}">
+    </div>      
+    <div class="mb-3">
+        <label for="inpNomTeam" class="form-label">Nom Equip (categoria)</label>        
+        <input type="text" id="inpNomTeam" name="inpNomTeam" class="form-control" tabindex="0" disabled
+        value="{{$objTeam->name}}">
+    </div>      
+    <div class="mb-3">
+        <label for="inpCod" class="form-label">Codi jugador</label>
         <input type="text" id="inpCod" name="inpCod" class="form-control" disabled
         value="{{$objPlayer->id}}">
     </div>

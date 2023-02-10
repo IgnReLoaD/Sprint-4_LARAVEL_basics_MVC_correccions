@@ -23,8 +23,21 @@
     <div class="mb-3">
         <label for="inpHomeTeam" class="form-label">Equip local</label>
         <input type="number" id="inpHomeTeam" name="inpHomeTeam" class="form-control" tabindex="3"
-        value="{{$game->home_team_id}}" >        
-    </div>        
+        value="{{$game->home_team_id}}" >  
+    </div>    
+
+    <div class="mb-3 form-group">                
+        <select class="form-control">
+            @foreach($teams as $team)
+                <option value="{{$team->id}}">{{$team->name}}</option>
+                {{-- @if ($team->club_id == inpHomeTeam.value) {     
+                    
+                }
+                @endif    --}}
+            @endforeach
+        </select>
+    </div>
+
     <div class="mb-3">
         <label for="inpHomeScore" class="form-label">Marcador local</label>
         <input type="number" id="inpHomeScore" name="inpHomeScore" class="form-control" tabindex="4"
