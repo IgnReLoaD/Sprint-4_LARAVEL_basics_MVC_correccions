@@ -1,6 +1,8 @@
 @extends('layouts.plantillabase');
 @section('contenido')
 
+<div class="container" style="border: solid 1px green; background-color: #F0FFF0; background-image: url('.resources/assets/cesped.jpg'">  
+<p></p>
 <h2>Afegir un Partit al calendari:</h2>
 <form action="/games" method="post"> 
     <!-- confiar en la pagina, i que no surti error 419-page expired  -->
@@ -78,8 +80,15 @@
         <input type="number" id="inpAwayTeam" name="inpAwayTeam" class="form-control" tabindex="11">
     </div>     
     --}}            
-   
+
+    <p></p>
+
     <a href="/games" class="btn btn-secondary" tabindex="10"> Cancelar </a>
     <button type="submit" class="btn btn-success" tabindex="11"> Grabar </button>
+
+    <p></p>
 </form>
+
+</div>
+
 @endsection

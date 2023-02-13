@@ -17,10 +17,13 @@ class GameController extends Controller
      */
     public function index()
     {
-        // echo "GameController ... index";
-        // die;
         $recordsetGames = Game::all();
-        return view('game.index')->with('recordsetGames', $recordsetGames);
+        $recordsetClubs = Club::all();
+        $recordsetTeams = Team::all();
+        return view('game.index')
+                ->with('recordsetGames', $recordsetGames)
+                ->with('recordsetClubs', $recordsetClubs)
+                ->with('recordsetTeams', $recordsetTeams);                
     }
 
     /**
@@ -49,9 +52,9 @@ class GameController extends Controller
         $objGame = new Game() ;
         $objGame->datetime     = $request->get('inpDat');
         $objGame->journey      = $request->get('inpJor');
-        $objGame->home_team_id = $request->get('cmbHomeClub');     // inpHomeTeam
+        $objGame->home_team_id = $request->get('cmbHomeTeam');     // inpHomeTeam
         $objGame->score_home   = $request->get('inpHomeScore');
-        $objGame->visitor_team_id = $request->get('cmbAwayClub');  // inpAwayTeam
+        $objGame->visitor_team_id = $request->get('cmbAwayTeam');  // inpAwayTeam
         $objGame->score_away   = $request->get('inpAwayScore');
         // to do in next version... Referee
         // $objGame->referee_id = $request->get('inpReferee');                                
@@ -100,9 +103,9 @@ class GameController extends Controller
         $objGame = Game::find($id);        
         $objGame->datetime     = $request->get('inpDat');
         $objGame->journey      = $request->get('inpJor');
-        $objGame->home_team_id = $request->get('cmbHomeClub');     // inpHomeTeam
+        $objGame->home_team_id = $request->get('cmbHomeTeam');     // inpHomeTeam
         $objGame->score_home   = $request->get('inpHomeScore');
-        $objGame->visitor_team_id = $request->get('cmbAwayClub');  // inpAwayTeam
+        $objGame->visitor_team_id = $request->get('cmbAwayTeam');  // inpAwayTeam
         $objGame->score_away   = $request->get('inpAwayScore');
         // to do in next version... Referee
         // $objGame->referee_id = $request->get('inpReferee');                                

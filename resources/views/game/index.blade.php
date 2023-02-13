@@ -30,10 +30,36 @@
                 <td>{{ $fieldsetGame->id }}</td>
                 <td style="text-align:center">{{ $fieldsetGame->datetime }}</td>
                 <td style="text-align:center">{{ $fieldsetGame->journey }}</td>
-                <td style="text-align:center">{{ $fieldsetGame->home_team_id }}</td>
+
+                <!-- <td style="text-align:center">{{ $fieldsetGame->home_team_id }}</td> -->
+                <td style="text-align:center">
+                    @foreach ($recordsetTeams as $fieldsetTeam)
+                        @if ($fieldsetTeam->id == $fieldsetGame->home_team_id)
+                            @foreach ($recordsetClubs as $fieldsetClub)
+                                @if ($fieldsetClub->id == $fieldsetTeam->club_id)
+                                    {{ $fieldsetClub->name}}
+                                @endif                             
+                            @endforeach
+                        @endif 
+                    @endforeach
+                </td>
+
                 <td style="text-align:right">{{ $fieldsetGame->score_home }}</td>
                 <td style="text-align:left">{{ $fieldsetGame->score_away }}</td>
-                <td style="text-align:center">{{ $fieldsetGame->visitor_team_id }}</td>
+
+                <!-- <td style="text-align:center">{{ $fieldsetGame->visitor_team_id }}</td> -->
+                <td style="text-align:center">
+                    @foreach ($recordsetTeams as $fieldsetTeam)
+                        @if ($fieldsetTeam->id == $fieldsetGame->home_team_id)
+                            @foreach ($recordsetClubs as $fieldsetClub)
+                                @if ($fieldsetClub->id == $fieldsetTeam->club_id)
+                                    {{ $fieldsetClub->name}}
+                                @endif                             
+                            @endforeach
+                        @endif 
+                    @endforeach
+                </td>
+
                 <td>
                     <form action="games/{{$fieldsetGame->id}}/destroy"  method="post">
                         <a href="/games/{{$fieldsetGame->id}}/edit"  class="btn btn-success">editar</a>
