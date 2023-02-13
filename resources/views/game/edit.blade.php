@@ -5,60 +5,79 @@
 <form action="/games/{{$game->id}}" method="post" >    
     @csrf 
     @method('PUT')
-    <div class="mb-3">
-        <label for="inpCod" class="form-label">Codi</label>
-        <input type="text" id="inpCod" name="inpCod" class="form-control" disabled
-        value="{{$game->id}}" >        
-    </div>
-    <div class="mb-3">
-        <label for="inpDat" class="form-label">Data</label>
-        <input type="date" id="inpDat" name="inpDat" class="form-control" tabindex="1"
-        value="{{$game->datetime}}" >
-    </div>    
-    <div class="mb-3">
-        <label for="inpJor" class="form-label">Jornada</label>
-        <input type="text" id="inpJor" name="inpJor" class="form-control" tabindex="2"
-        value="{{$game->journey}}" >        
-    </div>
-    <div class="mb-3">
-        <label for="inpHomeTeam" class="form-label">Equip local</label>
-        <input type="number" id="inpHomeTeam" name="inpHomeTeam" class="form-control" tabindex="3"
-        value="{{$game->home_team_id}}" >  
-    </div>    
 
-    <div class="mb-3 form-group">                
-        <select class="form-control">
-            @foreach($teams as $team)
-                <option value="{{$team->id}}">{{$team->name}}</option>
-                {{-- @if ($team->club_id == inpHomeTeam.value) {     
-                    
-                }
-                @endif    --}}
-            @endforeach
-        </select>
+    <div class="containter" style="margin-top: 60px; display:flex; flex-direction:row; justify-content:space-around; border: solid 1px green">
+        <div class="mb-3  mt-3">
+            <label for="inpCod" class="form-label">Codi </label>
+            <input type="text" id="inpCod" name="inpCod" style="width:80px" class="form-control" disabled
+            value="{{$game->id}}" >
+        </div>
+        <div class="mb-3  mt-3">
+            <label for="inpJor" class="form-label">Jornada </label>
+            <input type="text" id="inpJor" name="inpJor" style="width:80px" class="form-control" tabindex="1"
+        value="{{$game->journey}}" > 
+        </div>    
+        <div class="mb-3  mt-3">
+            <label for="inpDat" class="form-label">Data </label>
+            <input type="date" id="inpDat" name="inpDat" style="width:250px" class="form-control" tabindex="2"
+            value="{{$game->datetime}}" >
+        </div>    
+        <div class="mb-3  mt-3">
+            <label for="inpReferee" class="form-label">Col·legiat</label>
+            <input type="text" id="inpReferee" name="inpReferee" style="width:550px" class="form-control" tabindex="3"
+            disabled placeholder="per futura versio" >            
+        </div>  
     </div>
+    
+    <div class="container" style="margin-top: 60px; display:flex; flex-direction:row; justify-content:space-between; border: solid 1px green">
+        <div class="mb-3 mt-3 form-group">                
+            <label for="cmbHomeClub" class="form-label">Club local</label>
+            <select id="cmbHomeClub" class="form-control" style="width:200px" name="cmbHomeClub" tabindex="4">
+                @foreach($clubs as $club)
+                    <option value="{{$club->id}}">{{$club->name}}</option>
+                @endforeach
+            </select>
+        </div> 
+        <div class="mb-3 mt-3 form-group">                
+            <label for="cmbHomeTeam" class="form-label">Equip local</label>
+            <select id="cmbHomeTeam" class="form-control" style="width:200px" name="cmbHomeTeam" tabindex="5">
+                @foreach($teams as $team)
+                    <option value="{{$team->id}}">{{$team->name}}</option>
+                @endforeach
+            </select>
+        </div> 
+        <div class="mb-3 mt-3">
+            <label for="inpHomeScore" class="form-label">Marcador</label>
+            <input type="number" id="inpHomeScore" name="inpHomeScore" class="form-control" style="width:60px" tabindex="6"
+            value="{{$game->score_home}}" >
+        </div> 
+        <div class="mb-3 mt-3">
+            <label for="inpAwayScore" class="form-label">&nbsp;</label>
+            <input type="number" id="inpAwayScore" name="inpAwayScore" class="form-control" style="width:60px" tabindex="7"
+            value="{{$game->score_away}}" >
+        </div> 
+        <div class="mb-3 mt-3 form-group">                
+            <label for="cmbAwayClub" class="form-label">Club visitant</label>
+            <select id="cmbAwayClub" class="form-control" name="cmbAwayClub" style="width:200px" tabindex="8">
+                @foreach($clubs as $club)
+                    <option value="{{$club->id}}">{{$club->name}}</option>
+                @endforeach
+            </select>
+        </div>  
+        <div class="mb-3 mt-3 form-group">                
+            <label for="cmbAwayTeam" class="form-label">Equip visitant</label>
+            <select id="cmbAwayTeam" class="form-control" name="cmbAwayTeam" style="width:200px" tabindex="9">
+                @foreach($teams as $team)
+                    <option value="{{$team->id}}">{{$team->name}}</option>
+                @endforeach
+            </select>
+        </div>          
+    </div>
+    
+    <p></p>
 
-    <div class="mb-3">
-        <label for="inpHomeScore" class="form-label">Marcador local</label>
-        <input type="number" id="inpHomeScore" name="inpHomeScore" class="form-control" tabindex="4"
-        value="{{$game->score_home}}" >        
-    </div>     
-    <div class="mb-3">
-        <label for="inpAwayTeam" class="form-label">Equip visitant</label>
-        <input type="number" id="inpAwayTeam" name="inpAwayTeam" class="form-control" tabindex="5"
-        value="{{$game->visitor_team_id}}" >        
-    </div>     
-    <div class="mb-3">
-        <label for="inpAwayScore" class="form-label">Marcador visitant</label>
-        <input type="number" id="inpAwayScore" name="inpAwayScore" class="form-control" tabindex="6"
-        value="{{$game->score_away}}" >        
-    </div>                 
-    <div class="mb-3">
-        <label for="inpReferee" class="form-label">Col·legiat</label>
-        <input type="text" id="inpReferee" name="inpReferee" class="form-control" disabled placeholder="per futura versio" >
-    </div>     
-    <a href="/games" class="btn btn-secondary" tabindex="7">Cancelar </a>
-    <button type="submit" class="btn btn-success" tabindex="8">Grabar </button>
+    <a href="/games" class="btn btn-secondary" tabindex="10">Cancelar </a>
+    <button type="submit" class="btn btn-success" tabindex="11">Grabar </button>
 </form>
 <br>
 <hr>

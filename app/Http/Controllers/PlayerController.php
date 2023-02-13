@@ -96,14 +96,6 @@ class PlayerController extends Controller
      */
     public function edit($id_club, $id_team, $id_player)
     {        
-        // $fieldsetClub = Club::select("*")->where('id','=',$id_club)->get()->sortByDesc('name');        
-        // $fieldsetTeam = Team::find($id_team);
-        // $fieldsetPlayer = Player::find($id_player);
-        // // return view('player.edit', compact('objClub','objTeam','objPlayer'));
-        // return view('player.edit')
-        //         ->with('objClub',$fieldsetClub[0])
-        //         ->with('objTeam',$fieldsetTeam[0])
-        //         ->with('objPlayer',$fieldsetPlayer[0]);
         $objClub = Club::find($id_club);
         $objTeam = Team::find($id_team);
         $objPlayer = Player::find($id_player);
@@ -119,24 +111,18 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id_club, $id_team, $id_player)
     {
-        echo "PlayerController - update - id_club=".$id_club." id_team=".$id_team." id_player=".$id_player."<br>";
-        // die;
-
+        // echo "PlayerController - update - id_club=".$id_club." id_team=".$id_team." id_player=".$id_player."<br>";
         $objPlayer = Player::find($id_player);
         $objPlayer->team_id = $request->get('inpTea');
         $objPlayer->name = $request->get('inpNom');
         $objPlayer->number = $request->get('inpDor');   
         $objPlayer->birthdate = $request->get('inpBir');
         $objPlayer->save();
-
         // preparar la view 
-
-        // $objTeam = Team::find($request->get('inpTea'));
         $recordsetPlayers = Player::select("*")->where('team_id','=',$objPlayer->team_id)->get()->sortByDesc('name');
         return view('player.index')
                 ->with('recordsetPlayers',$recordsetPlayers)
                 ->with('id_club',$id_club); 
-                // ->with('id_club',$objTeam->club_id); 
     }
 
     /**

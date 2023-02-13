@@ -30,9 +30,12 @@ class GameController extends Controller
      */
     public function create()
     {
+        $recordsetClubs = Club::all();
         // seria interesante filtrar por campo categoria (Alevin, Juvenil...)
         $recordsetTeams = Team::all();
-        return view('game.create')->with('teams',$recordsetTeams);
+        return view('game.create')
+                    ->with('clubs',$recordsetClubs)
+                    ->with('teams',$recordsetTeams);
     }
 
     /**
@@ -46,9 +49,9 @@ class GameController extends Controller
         $objGame = new Game() ;
         $objGame->datetime     = $request->get('inpDat');
         $objGame->journey      = $request->get('inpJor');
-        $objGame->home_team_id = $request->get('inpHomeTeam');
+        $objGame->home_team_id = $request->get('cmbHomeClub');     // inpHomeTeam
         $objGame->score_home   = $request->get('inpHomeScore');
-        $objGame->visitor_team_id = $request->get('inpAwayTeam');
+        $objGame->visitor_team_id = $request->get('cmbAwayClub');  // inpAwayTeam
         $objGame->score_away   = $request->get('inpAwayScore');
         // to do in next version... Referee
         // $objGame->referee_id = $request->get('inpReferee');                                
@@ -97,9 +100,9 @@ class GameController extends Controller
         $objGame = Game::find($id);        
         $objGame->datetime     = $request->get('inpDat');
         $objGame->journey      = $request->get('inpJor');
-        $objGame->home_team_id = $request->get('inpHomeTeam');
+        $objGame->home_team_id = $request->get('cmbHomeClub');     // inpHomeTeam
         $objGame->score_home   = $request->get('inpHomeScore');
-        $objGame->visitor_team_id = $request->get('inpAwayTeam');
+        $objGame->visitor_team_id = $request->get('cmbAwayClub');  // inpAwayTeam
         $objGame->score_away   = $request->get('inpAwayScore');
         // to do in next version... Referee
         // $objGame->referee_id = $request->get('inpReferee');                                

@@ -33,4 +33,19 @@ class Game extends Model
     public function game_referee(){
         return $this->belongsToMany(game_referee::class, 'game_id');
     }    
+
+    // RELACIO PER MOSTRAR EL NOM EQUIP EN EL GRID
+    protected function homeTeamId(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Team::find($value),
+        );
+    }
+    protected function visitorTeamId(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Team::find($value),
+        );
+    }
+   
 }
