@@ -108,19 +108,6 @@
             document.getElementById("cmbHomeTeam").innerHTML = foreach(teams as team){if(team->club_id == cmbChange.value) print("<option value="{{$team->id}}">{{$team->name}}</option>") }
         });
 
-    // cmbClub = document.getElementById('cmbHomeClub');
-    // cmbClub.onchange(){
-    //     alert('change');
-    // }
-
-    // $(function(){
-    //     $('#cmbHomeClub').on('change', onSelectClubChange);
-    // });
-
-    // function onSelectClubChange(){
-    //     var club_id = $(this).val();
-    //     alert(club_id);
-    // }
 
     </script>
 @endsection
