@@ -18,11 +18,15 @@ use App\Http\Controllers\ActionController;
 |
 */
 
-Route::get('/', function () {
-    // return view('clubs.index');
-    return view('welcome');
-    die;
-});
+// Route::get('/', function () {
+    // return view('club.index');
+    // return view('welcome'); 
+    // die;
+// });
+
+// Ruta raíz enviar a Listado de Clubs mediante el Controller Index, para clubs::all()
+// Probado con Chrome, Explorer, Opera, Vivaldi, Firefox, Edge
+Route::get('/', [ClubController::class, 'index'])->name('club.index');
 
 // show store create index edit update destroy
 
