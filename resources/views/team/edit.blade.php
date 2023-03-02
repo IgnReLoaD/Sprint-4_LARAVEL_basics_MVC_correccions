@@ -17,16 +17,16 @@
     <!-- etiqueta Form només té method Post/Get, aquesta directiva de Blade permet dir PUT -->
     @method('PUT')
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="inpCodTeam" class="form-label">Codi equip</label>
         <input type="text" id="inpCodTeam" name="inpCodTeam" class="form-control" disabled
         value="{{$objTeam->id}}">
-    </div>
-    <div class="mb-3">
+    </div> -->
+    <!-- <div class="mb-3">
         <label for="inpCodClub" class="form-label">Codi Club</label>
         <input type="text" id="inpCodClub" name="inpCodClub" class="form-control" tabindex="0" 
         value="{{$objTeam->club_id}}">
-    </div>
+    </div> -->
     <div class="mb-3">
         <label for="inpNomClub" class="form-label">Nom Club</label>
         <input type="text" id="inpNomClub" name="inpNomClub" class="form-control" tabindex="0" disabled
