@@ -22,13 +22,13 @@
         value="{{$objTeam->name}}">
     </div>      
     <div class="mb-3">
-        <label for="inpCod" class="form-label">Codi jugador</label>
-        <input type="text" id="inpCod" name="inpCod" class="form-control" disabled
+        <!-- <label for="inpCod" class="form-label">Codi jugador</label> -->
+        <input type="hidden" id="inpCod" name="inpCod" class="form-control" disabled
         value="{{$objPlayer->id}}">
     </div>
     <div class="mb-3">
-        <label for="inpTea" class="form-label">Equip</label>
-        <input type="text" id="inpTea" name="inpTea" class="form-control" tabindex="1"
+        <!-- <label for="inpTea" class="form-label">Equip</label> -->
+        <input type="hidden" id="inpTea" name="inpTea" class="form-control" tabindex="1"
         value="{{$objPlayer->team_id}}">
     </div>
     <div class="mb-3">
@@ -46,8 +46,8 @@
         <input type="date" id="inpBir" name="inpBir" class="form-control" tabindex="4"
         value="{{$objPlayer->birthdate}}">
     </div>       
-    <a href="/clubs/{{$objTeam->club_id}}/teams/{{$objTeam->id}}/players" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="6">Grabar</button>
+    <a href="/clubs/{{$objTeam->club_id}}/teams/{{$objTeam->id}}/players" class="btn btn-secondary" tabindex="5">Cancelar (tornar a llista jugadors)</a>
+    <button type="submit" class="btn btn-success" tabindex="6">Grabar (i tornar a llista Jugadors de {{$objTeam->name}} de {{$objClub->name}})</button>
 </form>
 <br>
 <hr>

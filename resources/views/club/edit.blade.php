@@ -39,8 +39,8 @@
         <input type="text" id="inpAdd" name="inpAdd" class="form-control" tabindex="4"
         value="{{$club->office_address}}">
     </div>        
-    <a href="/clubs" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="6">Grabar</button>
+    <a href="/clubs" class="btn btn-secondary" tabindex="5">Cancelar (i tornar a llista Clubs)</a>
+    <button type="submit" class="btn btn-success" tabindex="6">Grabar (i tornar a llista Clubs)</button>
 </form>
 <br>
 <hr>

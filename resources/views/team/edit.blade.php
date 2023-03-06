@@ -62,8 +62,8 @@
         value="{{$objTeam->type}}">
     </div>             
     --}}
-    <a href="/clubs/{{$objTeam->club_id}}/teams" class="btn btn-secondary" tabindex="4">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="5">Grabar</button>
+    <a href="/clubs/{{$objTeam->club_id}}/teams" class="btn btn-secondary" tabindex="4">Cancelar (i tornar a llista Equips)</a>
+    <button type="submit" class="btn btn-success" tabindex="5">Grabar (i tornar a llista Equips de {{$objClub->name}})</button>
 </form>
 <br>
 <hr>

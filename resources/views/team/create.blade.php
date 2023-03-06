@@ -62,7 +62,7 @@
         </select>
     </div>  
 
-    <a href="/clubs/{{$id_club}}/teams" class="btn btn-secondary" tabindex="3">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="4">Grabar</button>
+    <a href="/clubs/{{$id_club}}/teams" class="btn btn-secondary" tabindex="3">Cancelar (i tornar a llista Equips del Club)</a>
+    <button type="submit" class="btn btn-success" tabindex="4">Grabar (i tornar a llista Equips del Club {{$objClub->name}})</button>
 </form>
 @endsection
