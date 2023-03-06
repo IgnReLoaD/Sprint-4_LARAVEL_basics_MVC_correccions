@@ -12,16 +12,18 @@
         <input type="text" id="inpCodTeam" name="inpCodTeam" class="form-control" disabled>
     </div>
     <div class="mb-3">
-        <label for="inpCodClub" class="form-label">Codi Club</label>
-        <!-- ojo! si ponemos DISABLED no incorpora el valor inpClb dentro de $_POST[]  -->
-        <input type="text" id="inpCodClub" name="inpCodClub" class="form-control" tabindex="0" 
-        value="{{$id_club}}">
+        <!-- <label for="inpCodClub" class="form-label">Codi Club</label> -->
+
+        <!-- ojo! a type=HIDDEN pq DISABLED no incorpora el valor inpCodClub dentro de $_POST[]  -->
+        <!-- evitar tener codigos editables en los formularios a nivel Seguridad es peligroso -->
+        <input type="hidden" id="inpCodClub" name="inpCodClub" class="form-control"  tabindex="0" 
+        value="{{$id_club}}" >
     </div>    
     <div class="mb-3">
         <label for="inpNomClub" class="form-label">Nom Club</label>
         <!-- ojo! si ponemos DISABLED no incorpora el valor inpClb dentro de $_POST[]  -->
         <input type="text" id="inpNomClub" name="inpNomClub" class="form-control" tabindex="0" 
-        value="{{$objClub->name}}">
+        value="{{$objClub->name}}" disabled>
     </div>    
   
     {{--
@@ -60,7 +62,7 @@
         </select>
     </div>  
 
-    <a href="/clubs/{{$id_club}}/teams" class="btn btn-secondary" tabindex="3">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="4">Grabar</button>
+    <a href="/clubs/{{$id_club}}/teams" class="btn btn-secondary" tabindex="3">Cancelar (i tornar a llista Equips del Club)</a>
+    <button type="submit" class="btn btn-success" tabindex="4">Grabar (i tornar a llista Equips del Club {{$objClub->name}})</button>
 </form>
 @endsection

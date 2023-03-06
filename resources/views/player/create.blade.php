@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-<h2>Crear nou Jugador per aquest equip de aquest Club:</h2>
+<h2>Crear nou Jugador per {{$objTeam->name}} de {{$objClub->name}}:</h2>
 
 {{-- <form action="/clubs/{{$team->club_id}}/teams/{{$team->id}}/players" method="post"> --}}
 
@@ -20,13 +20,14 @@
         value="{{$objTeam->name}}">
     </div>       
     <div class="mb-3">
-        <label for="inpCodPlayer" class="form-label">Codi jugador</label>
-        <input type="text" id="inpCodPlayer" name="inpCodPlayer" class="form-control" disabled>
+        <!-- <label for="inpCodPlayer" class="form-label">Codi jugador</label> -->
+        <!-- evitar tener un codigo editable en el formulario, aunque sea para estudiar -->
+        <input type="hidden" id="inpCodPlayer" name="inpCodPlayer" class="form-control" disabled >
     </div>
     <div class="mb-3">
-        <label for="inpCodTeam" class="form-label">Equip</label>
+        <!-- <label for="inpCodTeam" class="form-label">Equip</label> -->
         <!-- ojo! si ponemos DISABLED no incorpora el valor inpTea dentro del $_POST[]  -->
-        <input type="text" id="inpCodTeam" name="inpCodTeam" class="form-control" tabindex="0"        
+        <input type="hidden" id="inpCodTeam" name="inpCodTeam" class="form-control" tabindex="0"        
         value="{{$id_team}}">
         {{-- value="{{$team->id}}"> --}}
     </div>    
@@ -43,9 +44,9 @@
         <input type="date" id="inpBirthdate" name="inpBirthdate" class="form-control" tabindex="3">
     </div>    
 
-    {{-- <a href="/clubs/{{$team->club_id}}/teams/{{$team->id}}/players" class="btn btn-secondary" tabindex="3">Cancelar</a> --}}
-    <a href="/clubs/{{$id_club}}/teams/{{$id_team}}/players" class="btn btn-secondary" tabindex="4">Cancelar</a>
+    {{-- <a href="/clubs/{{$team->club_id}}/teams/{{$team->id}}/players" class="btn btn-secondary" tabindex="3">Cancelar (i tornar a llista Jugadors)</a> --}}
+    <a href="/clubs/{{$id_club}}/teams/{{$id_team}}/players" class="btn btn-secondary" tabindex="4">Cancelar (i tornar a llista Jugadors)</a>
 
-    <button type="submit" class="btn btn-success" tabindex="5">Grabar</button>
+    <button type="submit" class="btn btn-success" tabindex="5">Grabar (i tornar a llista Jugadors de {{$objTeam->name}} de {{$objClub->name}})</button>
 </form>
 @endsection

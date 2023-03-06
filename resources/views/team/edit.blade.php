@@ -17,16 +17,16 @@
     <!-- etiqueta Form només té method Post/Get, aquesta directiva de Blade permet dir PUT -->
     @method('PUT')
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="inpCodTeam" class="form-label">Codi equip</label>
         <input type="text" id="inpCodTeam" name="inpCodTeam" class="form-control" disabled
         value="{{$objTeam->id}}">
-    </div>
-    <div class="mb-3">
+    </div> -->
+    <!-- <div class="mb-3">
         <label for="inpCodClub" class="form-label">Codi Club</label>
         <input type="text" id="inpCodClub" name="inpCodClub" class="form-control" tabindex="0" 
         value="{{$objTeam->club_id}}">
-    </div>
+    </div> -->
     <div class="mb-3">
         <label for="inpNomClub" class="form-label">Nom Club</label>
         <input type="text" id="inpNomClub" name="inpNomClub" class="form-control" tabindex="0" disabled
@@ -62,8 +62,8 @@
         value="{{$objTeam->type}}">
     </div>             
     --}}
-    <a href="/clubs/{{$objTeam->club_id}}/teams" class="btn btn-secondary" tabindex="4">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="5">Grabar</button>
+    <a href="/clubs/{{$objTeam->club_id}}/teams" class="btn btn-secondary" tabindex="4">Cancelar (i tornar a llista Equips)</a>
+    <button type="submit" class="btn btn-success" tabindex="5">Grabar (i tornar a llista Equips de {{$objClub->name}})</button>
 </form>
 <br>
 <hr>
