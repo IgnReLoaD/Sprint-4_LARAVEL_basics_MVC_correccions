@@ -9,9 +9,10 @@
     <!-- confiar en la pagina, i que no surti error 419-page expired  -->
     @csrf 
 
+    <!-- evitar tener Codigos editables en Formularios, este ya estaba quitado pero repasar -->
     <!-- <div class="mb-3">
-        <label for="inpCod" class="form-label">Codi</label>
-        <input type="text" id="inpCod" name="inpCod" class="form-control" disabled>
+        <label for="inpCod" class="form-label">Codi </label>
+        <input type="text" id="inpCod" name="inpCod" class="form-control" disabled >
     </div> -->
     <div class="mb-3">
         <label for="inpNom" class="form-label">Nom</label>

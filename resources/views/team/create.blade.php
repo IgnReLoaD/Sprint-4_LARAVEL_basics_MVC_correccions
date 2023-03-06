@@ -15,9 +15,9 @@
         <!-- <label for="inpCodClub" class="form-label">Codi Club</label> -->
 
         <!-- ojo! a type=HIDDEN pq DISABLED no incorpora el valor inpCodClub dentro de $_POST[]  -->
-        
-        <input type="hidden" id="inpCodClub" name="inpCodClub" class="form-control" tabindex="0" 
-        value="{{$id_club}}">
+        <!-- evitar tener codigos editables en los formularios a nivel Seguridad es peligroso -->
+        <input type="hidden" id="inpCodClub" name="inpCodClub" class="form-control"  tabindex="0" 
+        value="{{$id_club}}" >
     </div>    
     <div class="mb-3">
         <label for="inpNomClub" class="form-label">Nom Club</label>

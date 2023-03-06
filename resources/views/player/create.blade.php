@@ -21,7 +21,8 @@
     </div>       
     <div class="mb-3">
         <!-- <label for="inpCodPlayer" class="form-label">Codi jugador</label> -->
-        <input type="hidden" id="inpCodPlayer" name="inpCodPlayer" class="form-control" disabled>
+        <!-- evitar tener un codigo editable en el formulario, aunque sea para estudiar -->
+        <input type="hidden" id="inpCodPlayer" name="inpCodPlayer" class="form-control" disabled >
     </div>
     <div class="mb-3">
         <!-- <label for="inpCodTeam" class="form-label">Equip</label> -->
