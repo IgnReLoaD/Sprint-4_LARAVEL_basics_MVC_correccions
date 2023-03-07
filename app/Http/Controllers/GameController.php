@@ -54,6 +54,9 @@ class GameController extends Controller
         echo "GameController::store...request->get('cmbHomeTeam') vale: " . $request->get('cmbHomeTeam') . "<br>";  
         echo "GameController::store...request->get('cmbHomeClub') vale: " . $request->get('cmbHomeClub') . "<br>";  
         echo "GameController::store...request->get('inpHomeScore') vale: " . $request->get('inpHomeScore') . "<br>";  
+        echo "GameController::store...request->get('inpAwayScore') vale: " . $request->get('inpAwayScore') . "<br>";
+        echo "GameController::store...request->get('cmbAwayClub') vale: " . $request->get('cmbAwayClub') . "<br>";        
+        echo "GameController::store...request->get('cmbAwayTeam') vale: " . $request->get('cmbAwayTeam') . "<br>";  
         // die;
 
         $request->validate([
@@ -85,9 +88,9 @@ class GameController extends Controller
         $objGame->score_home   = $strHomeScore;        
         $objGame->score_away   = $strAwayScore;        
         $objGame->home_team_id = $request->get('cmbHomeTeam');     // inpHomeTeam
-        // $objGame->home_club_id = $request->get('cmbHomeClub');
+        $objGame->home_club_id = $request->get('cmbHomeClub');
         $objGame->visitor_team_id = $request->get('cmbAwayTeam');  // inpAwayTeam
-        // $objGame->visitor_club_id = $request->get('cmbAwayClub');
+        $objGame->away_club_id = $request->get('cmbAwayClub');
 
         // to do in next version... Referee
         // $objGame->referee_id = $request->get('inpReferee');                                
