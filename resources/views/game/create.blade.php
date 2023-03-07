@@ -39,17 +39,17 @@
                     <option value="{{$club->id}}">{{$club->name}}</option>
                 @endforeach
             </select>
-            @error('cmbHomeClub')
-                <br>
-                <small class="text-red">{{ $message }}</small>
-            @enderror
         </div> 
         <div class="mb-3 mt-3 form-group">                
             <label for="cmbHomeTeam" class="form-label">Equip local</label>
-            <select id="cmbHomeTeam" class="form-control" style="width:200px" name="cmbHomeTeam" tabindex="5">
+            <select id="cmbHomeTeam" class="form-control" style="width:200px" name="cmbHomeTeam" tabindex="5"
+            disabled>
+                <option value="per futura versio">--per futura versio--</option>
+                {{--            
                 @foreach($teams as $team)
                     <option value="{{$team->id}}">{{$team->name}}</option>
                 @endforeach
+                --}}
             </select>
         </div> 
         <div class="mb-3 mt-3">
@@ -72,10 +72,14 @@
         </div>  
         <div class="mb-3 mt-3 form-group">                
             <label for="cmbAwayTeam" class="form-label">Equip visitant</label>
-            <select id="cmbAwayTeam" class="form-control" name="cmbAwayTeam" style="width:200px" tabindex="9">
+            <select id="cmbAwayTeam" class="form-control" name="cmbAwayTeam" style="width:200px" tabindex="9"
+            disabled>
+                <option value="per futura versio">--per futura versio--</option>
+                {{--
                 @foreach($teams as $team)
                     <option value="{{$team->id}}">{{$team->name}}</option>
                 @endforeach
+                --}}
             </select>
         </div>          
     </div>
@@ -91,10 +95,20 @@
     </div>     
     --}}            
 
+    @error('cmbHomeClub')
+        <br>
+        {{-- <small class="text-red">{{ $message }}</small> --}}
+        <small style="color:red">ATENCIO: has seleccionat els mateixos dos clubs.</small>
+    @enderror
+    @error('inpDat')
+        <br>
+        <small style="color:red">ATENCIO: verifica la data del partit.</small>
+    @enderror     
+
     <p></p>
 
-    <a href="/games" class="btn btn-secondary" tabindex="10"> Cancelar </a>
-    <button type="submit" class="btn btn-success" tabindex="11"> Grabar </button>
+    <a href="/games" class="btn btn-secondary" tabindex="10"> Cancelar (i tornar a llista partits) </a>
+    <button type="submit" class="btn btn-success" tabindex="11"> Grabar (i tornar a llista partits) </button>
 
     <p></p>
 </form>
