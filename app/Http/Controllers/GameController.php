@@ -49,6 +49,12 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+        echo "GameController::store...request->get('inpDat') vale: " . $request->get('inpDat') . "<br>";  
+        echo "GameController::store...request->get('inpJor') vale: " . $request->get('inpJor') . "<br>";  
+        echo "GameController::store...request->get('cmbHomeTeam') vale: " . $request->get('cmbHomeTeam') . "<br>";  
+        echo "GameController::store...request->get('inpHomeScore') vale: " . $request->get('inpHomeScore') . "<br>";  
+        // die;
+
         $objGame = new Game() ;
         $objGame->datetime     = $request->get('inpDat');
         $objGame->journey      = $request->get('inpJor');

@@ -17,9 +17,11 @@
             <label for="inpJor" class="form-label">Jornada </label>
             <input type="text" id="inpJor" name="inpJor" style="width:80px" class="form-control" tabindex="1">
         </div>    
-        <div class="mb-3  mt-3">
+        <div class="mb-3  mt-3">            
             <label for="inpDat" class="form-label">Data </label>
-            <input type="date" id="inpDat" name="inpDat" style="width:250px" class="form-control" tabindex="2">
+            <label name="lblExample">(per defecte {{date('d/m/Y')}} )</label>
+            <input type="date" id="inpDat" name="inpDat" style="width:250px" class="form-control" tabindex="2" 
+            value="{{date('d/m/Y')}}" placeholder="{{date('d/m/Y')}}">            
         </div>    
         <div class="mb-3  mt-3">
             <label for="inpReferee" class="form-label">Col·legiat</label>
