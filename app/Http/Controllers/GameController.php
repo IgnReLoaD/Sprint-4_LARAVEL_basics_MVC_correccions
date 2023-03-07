@@ -52,16 +52,43 @@ class GameController extends Controller
         echo "GameController::store...request->get('inpDat') vale: " . $request->get('inpDat') . "<br>";  
         echo "GameController::store...request->get('inpJor') vale: " . $request->get('inpJor') . "<br>";  
         echo "GameController::store...request->get('cmbHomeTeam') vale: " . $request->get('cmbHomeTeam') . "<br>";  
+        echo "GameController::store...request->get('cmbHomeClub') vale: " . $request->get('cmbHomeClub') . "<br>";  
         echo "GameController::store...request->get('inpHomeScore') vale: " . $request->get('inpHomeScore') . "<br>";  
         // die;
 
+        $request->validate([
+            'cmbHomeClub' => ['required','different:cmbAwayClub'],
+            'cmbAwayClub' => ['required','different:cmbHomeClub'],
+            'inpDat' => 'required'
+        ]);
+
+        $datAppoint = $request->get('inpDat');
+        if ($datAppoint == "") {            
+            $datAppoint = date('Y/m/d');
+        }
+        $strJornada = $request->get('inpJor');
+        if ($strJornada == "") {
+            $strJornada = "1";
+        }
+        $strHomeScore = $request->get('inpHomeScore');
+        if ($request->get('inpHomeScore') == "") {
+            $strHomeScore = "0";
+        }
+        $strAwayScore = $request->get('inpAwayScore');
+        if ($request->get('inpAwayScore') == "") {
+            $strAwayScore = "0";
+        }
+
         $objGame = new Game() ;
-        $objGame->datetime     = $request->get('inpDat');
-        $objGame->journey      = $request->get('inpJor');
+        $objGame->datetime     = $datAppoint;
+        $objGame->journey      = $strJornada;
+        $objGame->score_home   = $strHomeScore;        
+        $objGame->score_away   = $strAwayScore;        
         $objGame->home_team_id = $request->get('cmbHomeTeam');     // inpHomeTeam
-        $objGame->score_home   = $request->get('inpHomeScore');
+        // $objGame->home_club_id = $request->get('cmbHomeClub');
         $objGame->visitor_team_id = $request->get('cmbAwayTeam');  // inpAwayTeam
-        $objGame->score_away   = $request->get('inpAwayScore');
+        // $objGame->visitor_club_id = $request->get('cmbAwayClub');
+
         // to do in next version... Referee
         // $objGame->referee_id = $request->get('inpReferee');                                
         $objGame->save() ;
