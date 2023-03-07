@@ -18,42 +18,37 @@ use App\Http\Controllers\ActionController;
 |
 */
 
-// Route::get('/', function () {
-    // return view('club.index');
-    // return view('welcome'); 
-    // die;
-// });
-
 // Ruta raíz enviar a Listado de Clubs mediante el Controller Index, para clubs::all()
-// Probado con Chrome, Explorer, Opera, Vivaldi, Firefox, Edge
-Route::get('/', [ClubController::class, 'index'])->name('club.index');
+// Probado con navegadores Chrome,Explorer,Opera,Vivaldi,Firefox,Edge 
+Route::get('/', [ClubController::class,'index'])->name('club.index'); 
 
-// show store create index edit update destroy
+// VERBS: GET(llegir), POST(afegir), PUT(editar), DELETE(borrar)
+// CRUD-Contr: index, show (no usat), create + store (alta), edit + update (modif), destroy (elim)
 
 // CLUBS
-Route::resource('clubs','App\Http\Controllers\ClubController'); 
+Route::resource('clubs','App\Http\Controllers\ClubController');
 // Route::get('clubs', [ClubController::class, 'index'])->name('club.list');
-Route::put('clubs/{club}/edit', [ClubController::class, 'edit'])->name('club.details');
-Route::put('clubs/{club}/update', [ClubController::class, 'update'])->name('club.update');
-Route::delete('clubs/{club}/destroy', [TeamController::class, 'destroy'])->name('club.destroy');
+Route::put('clubs/{club}/edit', [ClubController::class, 'edit'])->name('club.details'); 
+Route::put('clubs/{club}/update', [ClubController::class, 'update'])->name('club.update'); 
+Route::delete('clubs/{club}/destroy', [TeamController::class, 'destroy'])->name('club.destroy'); 
 
 // TEAMS
-Route::resource('clubs/{club}/teams','App\Http\Controllers\TeamController'); 
-Route::get('clubs/{club}/teams', [TeamController::class, 'index'])->name('teams.list');
-Route::put('clubs/{club}/teams/{team}/edit', [TeamController::class, 'edit'])->name('team.details');
-Route::put('clubs/{club}/teams/{team}/update', [ClubController::class, 'update'])->name('team.update');
-Route::delete('clubs/{club}/teams/{team}/destroy', [TeamController::class, 'destroy'])->name('teams.destroy');
+Route::resource('clubs/{club}/teams','App\Http\Controllers\TeamController');
+Route::get('clubs/{club}/teams', [TeamController::class, 'index'])->name('teams.list'); 
+Route::put('clubs/{club}/teams/{team}/edit', [TeamController::class, 'edit'])->name('team.details'); 
+Route::put('clubs/{club}/teams/{team}/update', [ClubController::class, 'update'])->name('team.update'); 
+Route::delete('clubs/{club}/teams/{team}/destroy', [TeamController::class, 'destroy'])->name('teams.destroy'); 
 
-// PLAYERS (aprenem a treballar amb GRUPOS de Rutas)
+// PLAYERS  (aprenem a treballar amb GRUPOS de Rutas)
 Route::controller(PlayerController::class)->group(function(){
-    Route::get( 'clubs/{club}/teams/{team}/players',  'index');
-    Route::get( 'clubs/{club}/teams/{team}/players/create',  'create');
-    Route::post('clubs/{club}/teams/{team}/players',  'store');
-    Route::get( 'clubs/{club}/teams/{team}/players/{player}/edit',  'edit');
-    Route::get( 'players/{player}/edit',  'edit');
-    Route::put( 'clubs/{club}/teams/{team}/players/{player}',  'update');
-    Route::delete( 'clubs/{club}/teams/{team}/players/{player}/destroy',  'destroy');
-    Route::delete( 'players/{player}/destroy',  'destroy');
+    Route::get( 'clubs/{club}/teams/{team}/players', 'index');
+    Route::get( 'clubs/{club}/teams/{team}/players/create', 'create');
+    Route::post('clubs/{club}/teams/{team}/players', 'store');
+    Route::get( 'clubs/{club}/teams/{team}/players/{player}/edit', 'edit');
+    Route::get( 'players/{player}/edit', 'edit');
+    Route::put( 'clubs/{club}/teams/{team}/players/{player}', 'update');
+    Route::delete( 'clubs/{club}/teams/{team}/players/{player}/destroy', 'destroy');
+    Route::delete( 'players/{player}/destroy', 'destroy');
 });
 
 // MATCHES
