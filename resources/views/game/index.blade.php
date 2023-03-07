@@ -31,16 +31,11 @@
                 <td style="text-align:center">{{ $fieldsetGame->datetime }}</td>
                 <td style="text-align:center">{{ $fieldsetGame->journey }}</td>
 
-                <!-- <td style="text-align:center">{{ $fieldsetGame->home_team_id }}</td> -->
                 <td style="text-align:center">
-                    @foreach ($recordsetTeams as $fieldsetTeam)
-                        @if ($fieldsetTeam->id == $fieldsetGame->home_team_id)
-                            @foreach ($recordsetClubs as $fieldsetClub)
-                                @if ($fieldsetClub->id == $fieldsetTeam->club_id)
-                                    {{ $fieldsetClub->name}}
-                                @endif                             
-                            @endforeach
-                        @endif 
+                    @foreach ($recordsetClubs as $fieldsetClub)
+                        @if ($fieldsetClub->id == $fieldsetGame->home_club_id)
+                            {{ $fieldsetClub->name}}
+                        @endif                             
                     @endforeach
                 </td>
 
@@ -49,14 +44,10 @@
 
                 <!-- <td style="text-align:center">{{ $fieldsetGame->visitor_team_id }}</td> -->
                 <td style="text-align:center">
-                    @foreach ($recordsetTeams as $fieldsetTeam)
-                        @if ($fieldsetTeam->id == $fieldsetGame->home_team_id)
-                            @foreach ($recordsetClubs as $fieldsetClub)
-                                @if ($fieldsetClub->id == $fieldsetTeam->club_id)
-                                    {{ $fieldsetClub->name}}
-                                @endif                             
-                            @endforeach
-                        @endif 
+                    @foreach ($recordsetClubs as $fieldsetClub)
+                        @if ($fieldsetClub->id == $fieldsetGame->away_club_id)
+                            {{ $fieldsetClub->name}}
+                        @endif                             
                     @endforeach
                 </td>
 
