@@ -11,7 +11,13 @@ class Game extends Model
 {
     use HasFactory;
     // ATRIBUTS:
-    protected $fillable = ['id','datetime','journey','home_team_id', 'visitor_team_id','score_home','score_away'];
+    protected $fillable = [
+        'id',
+        'datetime', 'journey',
+        'home_team_id', 'visitor_team_id',
+        'score_home', 'score_away',
+        'home_club_id','away_club_id'
+    ];
     public $timestamps = false;
 
     // GAME 1--N ACTIONS (Right Join) ... hasMany()
